@@ -8,7 +8,7 @@ class PositionalEncoding(nn.Module):
         super().__init__()
         self.dropout = nn.Dropout(p=dropout)  # 初始化dropout层
 
-        pe = torch.zero(max_len,d_model)
+        pe = torch.zeros(max_len,d_model)
         position = torch.arange(0,max_len).unsqueeze(1) #[[0],[1],[2],...] max_len * 1
         # 指数和对数运算的原因是为了确保数值稳定性和计算效率
         div_term = torch.exp(torch.arange(0,d_model,2) *
@@ -22,5 +22,5 @@ class PositionalEncoding(nn.Module):
 
     def forward(self,x):
         # 输入x 的维度是(batch_size, seq_len, d_model)
-        x = x + Variable(self.pe[:,:x.size(1)],requires_grad=False) #截取前seq_len行
+        x = x + self.pe[:, :x.size(1)]  # 自动广播
         return self.dropout(x)
