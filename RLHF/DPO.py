@@ -15,7 +15,8 @@ class DPO:
         """
         log_probs = F.log_softmax(logits,dim=-1)
         # 把每个位置真实 token 对应的 log probability 提取出来
-        # 在 log_probs 的最后一个维度（vocab_size）上，根据 labels 提供的索引，取出对应的 log prob
+        # 在 log_probs 的最后一个维度（vocab_size）上，
+        # 根据 labels 提供的索引，取出对应的 log prob
         token_log_probs = torch.gather(
             log_probs,
             dim=-1,
