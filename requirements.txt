@@ -1,0 +1,18 @@
+# Core dependencies for my_llm_Code
+# Install with:  pip install -r requirements.txt
+#
+# Python 3.9+ on macOS (arm64 / Apple Silicon) recommended.
+# The torch wheel for arm64 macOS ships with MPS (Metal Performance Shaders) support.
+
+torch==2.8.0
+numpy==2.0.2
+
+# --- transitive dependencies (auto-installed by the above, pinned for reproducibility) ---
+sympy==1.14.0
+networkx==3.2.1
+jinja2==3.1.6
+filelock==3.19.1
+fsspec==2025.10.0
+MarkupSafe==3.0.4
+mpmath==1.3.0
+typing-extensions==4.16.0
